@@ -1,6 +1,2 @@
-# Default values for keptndemo.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-image: core.harbor.domain/stages/stages:1.0
+image: core.harbor.domain/stages/stages:1
 replicaCount: 1
