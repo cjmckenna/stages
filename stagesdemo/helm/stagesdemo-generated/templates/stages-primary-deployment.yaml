@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: stages
+  name: stages-primary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stages-primary
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: stages-primary
+    spec:
+      containers:
+      - env:
+        - name: DT_CUSTOM_PROP
+          value: keptn_project=stages keptn_service=stagesdemo keptn_stage=dev keptn_deployment=primary
+        - name: KEPTN_PROJECT
+          value: stages
+        - name: KEPTN_STAGE
+          value: dev
+        - name: KEPTN_SERVICE
+          value: stagesdemo
+        - name: KEPTN_DEPLOYMENT
+          value: canary
+        image: core.harbor.domain/stages/stages:1
+        imagePullPolicy: Always
+        name: stages
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+status: {}
