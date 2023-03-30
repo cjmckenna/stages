@@ -1,0 +1,17 @@
+apiVersion: v2
+actions:
+  - name: "Run JMeter"
+    events:
+      - name: "sh.keptn.event.test.triggered"
+        jsonpath:
+          property: "$.data.test.teststrategy"
+          match: "functional"
+    tasks:
+      - name: "Run jmeter smoke tests"
+        files:
+          - jmeter/functest.jmx
+        image: "core.harbor.domain/jmeter/jmeter:latest"
+        args:
+          - '-n'
+          - '-t'
+          - '/keptn/jmeter/functest.jmx'
