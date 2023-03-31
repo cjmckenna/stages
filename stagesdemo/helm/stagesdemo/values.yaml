@@ -1,2 +1,2 @@
-image: core.harbor.domain/stages/stages:2
+image: core.harbor.domain/stages/stages:1
 replicaCount: 1
